@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuse & Share - @yield('title')</title>
 
-    @if (Request::is('home') || Request::is('profile'))
+    @if (Request::is('home', 'profile', 'laporan'))
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     @endif
     @if (Request::is('pesananku'))
@@ -15,7 +15,7 @@
     @if (Request::is('pesan/detail/*'))
         <link rel="stylesheet" href="{{ asset('css/pesan.css') }}">
     @endif
-    @if (Request::is('upload-produk'))
+    @if (Request::is('upload-produk', 'edit-produk/*', 'profile/*'))
         <link rel="stylesheet" href="{{ asset('css/upload-produk.css') }}">
     @endif
     @if (Request::is('profile'))
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    @if (Request::is('home') || Request::is('profile'))
+    @if (Request::is('home', 'profile', 'laporan'))
         <header class="header">
             <a href="/home" class="logo" style="text-decoration: none">Reuse & share</a>
             <div style="position: relative; display: inline-block;">
@@ -54,7 +54,7 @@
 
     @yield('content')
 
-    @if (Request::is('home') || Request::is('profile'))
+    @if (Request::is('home', 'profile', 'laporanff'))
         <script src="{{ asset('js/home.js') }}"></script>
         <script>
             function toggleDropdown() {
@@ -78,7 +78,7 @@
     @if (Request::is('pesan/detail/*'))
         <script src="{{ asset('js/pesan.js') }}"></script>
     @endif
-    @if (Request::is('upload-produk'))
+    @if (Request::is('upload-produk', 'edit-produk/*', 'profile/*'))
         <script src="{{ asset('js/upload-produk.js') }}"></script>
     @endif
     @stack('scripts')

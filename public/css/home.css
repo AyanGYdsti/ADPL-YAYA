@@ -178,7 +178,6 @@ body {
 
 .main-content {
     display: grid;
-    grid-template-columns: 1fr 300px;
     gap: 2rem;
     margin: 0 2rem;
 }

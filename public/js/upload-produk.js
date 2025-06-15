@@ -158,15 +158,10 @@ function goBack() {
 }
 
 // Handle form submission
-async function handleSubmit(event) {
+async function handleSubmit(event, kondisi = "") {
     event.preventDefault();
 
     const form = event.target;
-
-    if (uploadedImages.length === 0) {
-        alert("Silakan unggah minimal satu gambar produk!");
-        return;
-    }
 
     const submitBtn = document.querySelector(".confirm-btn");
     const originalText = submitBtn.textContent;
@@ -175,6 +170,13 @@ async function handleSubmit(event) {
 
     // Ambil data dari form
     const formData = new FormData(form);
+
+    if (!kondisi) {
+        if (uploadedImages.length === 0) {
+            alert("Silakan unggah minimal satu gambar produk!");
+            return;
+        }
+    }
 
     // Tambahkan file asli dari uploadedImages
     uploadedImages.forEach((imgObj) => {
@@ -202,11 +204,7 @@ async function handleSubmit(event) {
             const result = await response.json();
             alert(result.message || "Produk berhasil disimpan!");
 
-            // Reset form dan slider
-            form.reset();
-            uploadedImages = [];
-            currentSlideIndex = 0;
-            updateImageDisplay();
+            location.reload();
         } else if (response.status === 422) {
             const errorData = await response.json();
             const firstError = Object.values(errorData.errors)[0][0];

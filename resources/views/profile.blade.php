@@ -14,7 +14,7 @@
             </div>
             <div class="buttons">
                 <a href="/upload-produk">+ Unggah barang baru</a>
-                <a href="">Edit Profil</a>
+                <a href="/profile/{{ $user->id }}">Edit Profil</a>
             </div>
         </div>
     </div>
@@ -27,13 +27,23 @@
     @if ($product->count() > 0)
         <div class="barang-list">
             @foreach ($product->get() as $product)
-                <a href="/pesan/detail/{{ $product->id }}" style="text-decoration: none">
-                    <div class="barang-item">
-                        <img src="{{ asset('img/avatar.png') }}" alt="{{ $product['nama'] }}">
+                <div class="barang-item" style="position: relative;">
+                    <!-- Tombol Hapus -->
+                    <div style="position: absolute; top: 8px; right: 8px;">
+                        <a href="/profile/hapus/{{ $product->id }}" onclick="return confirm('Yakin ingin menghapus produk ini?')"
+                            style="background: #e74c3c; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; text-decoration:none">
+                            ✕
+                        </a>
+                    </div>
+
+                    <!-- Konten Produk -->
+                    <a href="/edit-produk/{{ $product->id }}" style="text-decoration: none; color: inherit;">
+                        <img src="/storage/{{ json_decode($product['gambar'])[0] ?? 'produk/avatar.png' }}"
+                            alt="{{ $product['nama'] }}">
                         <h4>{{ $product['nama'] }}</h4>
                         <p>Rp {{ number_format($product['harga'], 0, ',', '.') }}</p>
-                    </div>
-                </a>
+                    </a>
+                </div>
             @endforeach
         </div>
     @else

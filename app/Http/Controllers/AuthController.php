@@ -23,7 +23,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('home');
+            return Auth::user()->role_id == 1 ? redirect()->intended('laporan') : redirect()->intended('home');
         }
 
         return back()->withErrors([
@@ -41,6 +41,8 @@ class AuthController extends Controller
             'no_hp' => 'required',
             'password' => 'required',
         ]);
+
+        $data['role_id'] = 2;
 
         $user = User::where('email', $data['email'])->first();
 

@@ -78,8 +78,8 @@
                     </div>
                 </div>
             </div>
-            @if (auth()->user()->id == $product->user_id)
-                <button class="order-btn" onclick="orderItem()">Sold Out</button>
+            @if (auth()->user()->role_id == '1')
+                <a href="/profile/hapus/{{ $product->id }}" class="order-btn">Hapus</a>
             @endif
         </div>
     </div>

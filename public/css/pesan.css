@@ -318,7 +318,8 @@ body {
 
 .order-btn {
     width: 100%;
-    background: #5fb3b3;
+    text-decoration: none;
+    background: red;
     border: none;
     color: white;
     padding: 18px;
