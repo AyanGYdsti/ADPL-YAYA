@@ -63,8 +63,20 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Kategori Barang</label>
-                        <input type="text" name="kategori" placeholder="Kategori" required />
+                        <label for="kategori">Kategori Barang</label>
+                        <select name="kategori" id="kategori" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            <option value="Elektronik">Elektronik</option>
+                            <option value="Pakaian">Pakaian</option>
+                            <option value="Tas">Tas</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Buku">Buku</option>
+                            <option value="Mainan">Mainan</option>
+                            <option value="Kendaraan">Kendaraan</option>
+                            <option value="Olaharaga">Peralatan</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+
                     </div>
                     <div class="form-group">
                         <label>Jenis Barang</label>
