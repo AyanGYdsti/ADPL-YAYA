@@ -126,9 +126,12 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return response()->json([
-            'message' => 'Produk berhasil disimpan!',
-        ]);
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'message' => 'Produk berhasil disimpan!',
+                'redirect' => route('profile')
+            ]);
+        }
     }
 
 

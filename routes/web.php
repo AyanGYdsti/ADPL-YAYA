@@ -23,7 +23,7 @@ Route::post('/register', [AuthController::class, 'authRegister']);
 Route::post('/login', [AuthController::class, 'authLogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/profile', [ProfilController::class, 'index']);
+Route::get('/profile', [ProfilController::class, 'index'])->name('profile');
 Route::get('/profile/{id}', [ProfilController::class, 'editProfile']);
 Route::put('/profile/update/{id}', [ProfilController::class, 'updateProfile'])->name('profile.update');
 Route::get('/profile/hapus/{id}', [ProfilController::class, 'hapusProfile'])->name('profile.hapus');

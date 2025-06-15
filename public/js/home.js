@@ -4,6 +4,7 @@ function loadProductsFromAPI(kategori = null, keyword = null) {
     if (kategori) params.kategori = kategori;
     if (keyword) params.keyword = keyword;
 
+
     $.ajax({
         url: "/products",
         method: "GET",

@@ -151,7 +151,7 @@ function handleSwipe() {
 // Handle back button
 function goBack() {
     if (window.history.length > 1) {
-        window.history.back();
+        window.location.href = "/profile";
     } else {
         window.location.href = "/";
     }
